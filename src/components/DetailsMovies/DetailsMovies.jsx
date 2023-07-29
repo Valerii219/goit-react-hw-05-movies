@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { getDetails } from 'services/getMovies';
 import { useParams } from 'react-router-dom';
+import noImages from '../../images/noImages.jpg'
 
 const DetailsMovies = () => {
   const [detailsMovie, setDetailsMovie] = useState({});
   const { id } = useParams();
-
+ 
   useEffect(() => {
     getDetails(id)
       .then((response) => {
@@ -19,6 +20,7 @@ const DetailsMovies = () => {
           id: data.id,
           title: data.title || data.original_name,
           img: data.backdrop_path,
+          score:Math.ceil(Number(data.vote_average) * 10),
           overview: data.overview,
           genres: data.genres,
         };
@@ -33,8 +35,9 @@ const DetailsMovies = () => {
     <div>
       {detailsMovie.id && (
         <div>
-          <img src={detailsMovie.backdrop_path} alt="Movie Poster" crossorigin="anonymous" />
+          <img src={ detailsMovie.img ? `https://image.tmdb.org/t/p/w500/${detailsMovie.img}` : noImages} alt="Movie Poster"  />
           <h2>{detailsMovie.title}</h2>
+          <p>Users score: {detailsMovie.score}%</p>
           <h2>Overview</h2>
           <p>{detailsMovie.overview}</p>
           <h2>Genres</h2>

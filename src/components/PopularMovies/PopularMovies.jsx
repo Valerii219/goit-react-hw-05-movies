@@ -32,7 +32,7 @@ const PopularMovies = () => {
       <ul>
         {movieListDay.map((movie) => (
           <li key={movie.id}>
-            <NavLink to={`movies/details/${movie.id}`}> {movie.title || movie.original_name}</NavLink>
+            <NavLink to={`movies/${movie.id}`}> {movie.title || movie.original_name}</NavLink>
           </li>
         ))}
       </ul>
