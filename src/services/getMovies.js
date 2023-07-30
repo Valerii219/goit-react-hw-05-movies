@@ -17,8 +17,8 @@ export const getCredits = (movieId)=>{
     return fetch(`${BASE_URL}movie/${movieId}/credits?api_key=${API_KEY}`) 
 }
 
-export const getReviews = ()=>{
-    return fetch(`${BASE_URL}movie/{movie_id}/reviews?api_key=${API_KEY}`) 
+export const getReviews = (movieId)=>{
+    return fetch(`${BASE_URL}movie/${movieId}/reviews?api_key=${API_KEY}`) 
 }
 
 

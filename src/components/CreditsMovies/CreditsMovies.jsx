@@ -6,6 +6,7 @@ import noImages from '..//../images/noImages.jpg';
 const CreditsMovies = () => {
   const [movieImg, setmovieImg] = useState([]);
   const { id } = useParams();
+  
 
   useEffect(() => {
     getCredits(id)

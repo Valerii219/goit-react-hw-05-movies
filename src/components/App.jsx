@@ -1,11 +1,12 @@
 
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes,  } from 'react-router-dom'
 import Movies from 'pages/Movies'
 import Layout from 'Layout/Layout'
 import Error from 'pages/Error'
 import Details from 'pages/Details'
 import PopularMovies from './PopularMovies/PopularMovies'
 import CreditsMovies from './CreditsMovies/CreditsMovies'
+import ReviewMovies from './ReviewMovies/ReviewMovies'
 
 
 
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="movies" element={<Movies />} />
         <Route path="movies/:id" element={<Details />}>
           <Route path="cast" element={<CreditsMovies />} />
+          <Route path="reviews" element={<ReviewMovies />} />
         </Route>
       </Route>
 

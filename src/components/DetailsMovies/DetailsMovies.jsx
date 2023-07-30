@@ -56,8 +56,8 @@ const DetailsMovies = () => {
       <div>
         <p>Additional information</p>
       <ul>
-        <li> <NavLink to={`cast`}>Cast</NavLink></li>
-        <li> <NavLink to={`review`}>Reviews</NavLink></li>
+        <li> <NavLink to={`/movies/${id}/cast`}>Cast</NavLink></li>
+        <li> <NavLink to={`/movies/${id}/review`}>Reviews</NavLink></li>
       </ul>
       </div>
      
