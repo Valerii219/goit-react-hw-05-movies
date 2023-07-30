@@ -6,15 +6,15 @@ export const getMoviesAllDay =()=>{
 }
 
 export const getSearch = (query) =>{
-    return fetch(`${BASE_URL}search/collection?api_key=${API_KEY}&query=${query}`) 
+    return fetch(`${BASE_URL}search/movie?api_key=${API_KEY}&query=${query}`) 
 }
 
 export const getDetails = (movieId)=>{
     return fetch(`${BASE_URL}movie/${movieId}?api_key=${API_KEY}`) 
 }
 
-export const getCredits = ()=>{
-    return fetch(`${BASE_URL}credit/{credit_id}?api_key=${API_KEY}`) 
+export const getCredits = (movieId)=>{
+    return fetch(`${BASE_URL}movie/${movieId}/credits?api_key=${API_KEY}`) 
 }
 
 export const getReviews = ()=>{

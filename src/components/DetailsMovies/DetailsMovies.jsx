@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { getDetails } from 'services/getMovies';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import noImages from '../../images/noImages.jpg'
+
+
 
 const DetailsMovies = () => {
   const [detailsMovie, setDetailsMovie] = useState({});
+ 
   const { id } = useParams();
+
  
   useEffect(() => {
     getDetails(id)
@@ -49,6 +53,14 @@ const DetailsMovies = () => {
           </ul>
         </div>
       )}
+      <div>
+        <p>Additional information</p>
+      <ul>
+        <li> <NavLink to={`cast`}>Cast</NavLink></li>
+        <li> <NavLink to={`review`}>Reviews</NavLink></li>
+      </ul>
+      </div>
+     
     </div>
   );
 };

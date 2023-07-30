@@ -30,7 +30,7 @@ const SearchMovies = () => {
       .then((data) => {
         const movies = data.results.map((movie) => ({
           id: movie.id,
-          name: movie.name,
+          title: movie.title || movie.original_name,
         }));
         setMovieList(movies);
       })
@@ -56,7 +56,7 @@ const SearchMovies = () => {
         <ul>
           {movieList.map((movie) => (
             <li key={movie.id}>
-                <NavLink to={`/movies/${movie.id}`}>{movie.name}</NavLink>
+                <NavLink to={`/movies/${movie.id}`}>{movie.title || movie.original_name}</NavLink>
             </li>
           ))}
         </ul>
