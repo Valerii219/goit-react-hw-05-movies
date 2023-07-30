@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { getMoviesAllDay } from 'services/getMovies';
 
 const PopularMovies = () => {
   const [movieListDay, setMovieListDay] = useState([]);
-
+const location = useLocation();
   useEffect(() => {
     getMoviesAllDay()
       .then((response) => {
@@ -32,7 +32,7 @@ const PopularMovies = () => {
       <ul>
         {movieListDay.map((movie) => (
           <li key={movie.id}>
-            <NavLink to={`movies/${movie.id}`}> {movie.title || movie.original_name}</NavLink>
+            <NavLink to={`movies/${movie.id}` } state ={{from:location}}> {movie.title || movie.original_name}</NavLink>
           </li>
         ))}
       </ul>

@@ -1,15 +1,50 @@
-import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link,   useLocation,  useSearchParams } from 'react-router-dom';
 
 import { getSearch } from 'services/getMovies';
 
 const SearchMovies = () => {
   const [movies, setMovies] = useState('');
   const [movieList, setMovieList] = useState([]);
-  const navigate = useNavigate()
+  const location = useLocation();
+const firstRender = useRef(true);
+  const [searchParams, setSearchParams] = useSearchParams();
 
+  const searchValue = searchParams.get('q');
+  
+  useEffect(()=>{
+    !searchValue && setSearchParams({})}
+    , [searchValue, setSearchParams]
+  )
+
+  useEffect(() => {
+    if (firstRender.current && searchValue) {
+      getSearch(searchValue)
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          return Promise.reject('Network response was not ok');
+        })
+        .then((data) => {
+          const movies = data.results.map((movie) => ({
+            id: movie.id,
+            title: movie.title || movie.original_name,
+          }));
+          setMovieList(movies);
+        })
+        .catch((error) => {
+          console.error('Error fetching movies:', error);
+        });
+
+      firstRender.current = false;
+    }
+  }, [searchValue]);
+  
   const changeNameMovies = (e) => {
     setMovies(e.currentTarget.value.toLowerCase());
+    
+  
   };
 
   const handleSubmit = (e) => {
@@ -18,7 +53,7 @@ const SearchMovies = () => {
       alert('Write something in input');
       return;
     }
-    navigate(`/movies?q=${movies}`);
+    setMovies('');
 
     getSearch(movies)
       .then((response) => {
@@ -37,6 +72,10 @@ const SearchMovies = () => {
       .catch((error) => {
         console.error('Error fetching movies:', error);
       });
+
+      setSearchParams({ q: movies });
+    
+    
   };
 
   return (
@@ -52,14 +91,18 @@ const SearchMovies = () => {
       </form>
 
       <div>
-        <h2>Movie List</h2>
+        {movieList.length > 0 ?
+        (<div><h2>Movie List</h2>
         <ul>
+          
           {movieList.map((movie) => (
+            
             <li key={movie.id}>
-                <NavLink to={`/movies/${movie.id}`}>{movie.title || movie.original_name}</NavLink>
+              <Link to={`/movies/${movie.id}`} state ={{from:location}}>{movie.title || movie.original_name}</Link>
             </li>
           ))}
-        </ul>
+        </ul></div>
+      ) : ("")}
       </div>
     </div>
   );

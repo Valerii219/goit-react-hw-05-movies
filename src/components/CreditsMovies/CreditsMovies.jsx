@@ -6,7 +6,6 @@ import noImages from '..//../images/noImages.jpg';
 const CreditsMovies = () => {
   const [movieImg, setmovieImg] = useState([]);
   const { id } = useParams();
-  
 
   useEffect(() => {
     getCredits(id)
@@ -33,7 +32,7 @@ const CreditsMovies = () => {
       <ul>
         {movieImg.map((movie) => (
           <li key={movie.id}>
-            <img src={movie.img ? `https://image.tmdb.org/t/p/w500/${movie.img}` : noImages} alt="Movie Poster" />
+            <img src={movie.img ? `https://image.tmdb.org/t/p/w500/${movie.img}` : noImages} width={250} alt="Movie Poster" />
           </li>
         ))}
       </ul>

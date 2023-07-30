@@ -17,7 +17,7 @@ const ReviewMovies = () => {
       .then((data) => {
         const reviews = data.results.map((review) => ({
           id: review.id,
-          text: review.overwiew,
+          text: review.content,
         }));
         setmoviesReview(reviews);
       })
@@ -28,13 +28,17 @@ const ReviewMovies = () => {
 
   return (
     <div>
-      <ul>
-        {moviesReview.map((review) => (
-          <li key={review.id}>
-            <p>{review.overwiew}</p>
-          </li>
-        ))}
-      </ul>
+      {moviesReview.length > 0 ? (
+        <ul>
+          {moviesReview.map((review) => (
+            <li key={review.id}>
+              <p>{review.text}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No reviews available.</p>
+      )}
     </div>
   );
 };
