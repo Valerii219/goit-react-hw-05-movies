@@ -6,7 +6,7 @@ import Layout from 'Layout/Layout'
 import Error from 'pages/Error'
 import Details from 'pages/Details'
 import PopularMovies from './PopularMovies/PopularMovies'
-import SearchMovies from './SearchMovies/SearchMovies'
+
 
 
 const App = () => {
@@ -17,8 +17,6 @@ const App = () => {
           <Route index element={<PopularMovies/>}/>
           <Route path='movies' element={<Movies/>}/>
           <Route path='movies/:id' element={<Details/>}/>
-          <Route path='movies/:search' element={<Details/>}/>
-          
       </Route>
       <Route path='*' element={<Error/>}/>
     </Routes>

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 import { getSearch } from 'services/getMovies';
 
 const SearchMovies = () => {
   const [movies, setMovies] = useState('');
   const [movieList, setMovieList] = useState([]);
+  const navigate = useNavigate()
 
   const changeNameMovies = (e) => {
     setMovies(e.currentTarget.value.toLowerCase());
@@ -17,6 +18,7 @@ const SearchMovies = () => {
       alert('Write something in input');
       return;
     }
+    navigate(`/movies?q=${movies}`);
 
     getSearch(movies)
       .then((response) => {
