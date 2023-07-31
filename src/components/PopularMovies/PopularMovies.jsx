@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { getMoviesAllDay } from 'services/getMovies';
-
+import css from './PopularMovies.module.css'
 const PopularMovies = () => {
   const [movieListDay, setMovieListDay] = useState([]);
 const location = useLocation();
@@ -28,11 +28,11 @@ const location = useLocation();
   }, []);
 
   return (
-    <div><h2>Trending Today</h2>
-      <ul>
+    <div><h2 className ={css.trend}>Trending Today  </h2>
+      <ul className={css.list}>
         {movieListDay.map((movie) => (
-          <li key={movie.id}>
-            <NavLink to={`movies/${movie.id}` } state ={{from:location}}> {movie.title || movie.original_name}</NavLink>
+          <li key={movie.id} >
+            <NavLink to={`movies/${movie.id}` } className={css.movieList} state ={{from:location}}> {movie.title || movie.original_name}</NavLink>
           </li>
         ))}
       </ul>

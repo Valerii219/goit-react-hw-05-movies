@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link,   useLocation,  useSearchParams } from 'react-router-dom';
-
+import css from '../PopularMovies/PopularMovies.module.css'
 import { getSearch } from 'services/getMovies';
 
 const SearchMovies = () => {
@@ -86,19 +86,20 @@ const firstRender = useRef(true);
           placeholder="Search movies"
           value={movies}
           onChange={changeNameMovies}
+          className={css.input}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className={css.btnForm}>Search</button>
       </form>
 
       <div>
         {movieList.length > 0 ?
-        (<div><h2>Movie List</h2>
-        <ul>
+        (<div><h2 className={css.trend}>Movie List</h2>
+        <ul className={css.list}>
           
           {movieList.map((movie) => (
             
             <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`} state ={{from:location}}>{movie.title || movie.original_name}</Link>
+              <Link to={`/movies/${movie.id}`}  className={css.movieList} state ={{from:location}}>{movie.title || movie.original_name}</Link>
             </li>
           ))}
         </ul></div>

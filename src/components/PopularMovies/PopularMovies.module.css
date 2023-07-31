@@ -1,0 +1,53 @@
+.trend{
+    font-family:'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 1.67;
+    letter-spacing: 0.03em;
+    color: grey;
+  
+    margin: 15px 0 10px 45px;
+}
+.movieList{
+    color:orange;
+    text-decoration: none;
+    
+}
+.list{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    padding-left: 35px;
+    list-style:circle;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.6;
+    
+}
+.input{
+    margin: 5px 5px 5px;
+
+    min-width: 450px;
+  height: 20px;
+  border: 1px solid rgba(21, 8, 8, 0.3);
+  border-radius: 4px;
+  background-color: white;
+  outline: white;
+  padding: 8px 16px;
+  color: var(--third-text-color);
+}
+
+.btnForm{
+  
+    width: 100px;
+    letter-spacing: 0.04em;
+    font-size: 16px;
+    line-height: 1.5;
+    color: white;
+    background-color: red;
+    border: 0;
+    border-radius: 4px;
+    padding: 8px 8px 8px 8px;
+}

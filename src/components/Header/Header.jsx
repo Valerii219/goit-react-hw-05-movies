@@ -4,9 +4,9 @@ import {  NavLink } from 'react-router-dom';
 
 const Header = () => {
   return (<header>
-    <div className={css.color}>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/movies">Movies</NavLink>
+    <div className={css.header}>
+        <NavLink className={css.home } to="/">Home</NavLink>
+        <NavLink  className={css.movies} to="/movies">Movies</NavLink>
     </div>
     </header>
     

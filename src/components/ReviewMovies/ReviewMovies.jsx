@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getReviews } from 'services/getMovies';
-
+import css from './ReviewMovies.module.css'
 const ReviewMovies = () => {
   const [moviesReview, setmoviesReview] = useState([]);
   const { id } = useParams();
@@ -32,12 +32,12 @@ const ReviewMovies = () => {
         <ul>
           {moviesReview.map((review) => (
             <li key={review.id}>
-              <p>{review.text}</p>
+              <p className={css.text}>{review.text}</p>
             </li>
           ))}
         </ul>
       ) : (
-        <p>No reviews available.</p>
+        <p className={css.text}>No reviews available.</p>
       )}
     </div>
   );

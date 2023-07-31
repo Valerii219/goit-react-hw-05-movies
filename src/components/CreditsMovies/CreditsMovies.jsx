@@ -32,7 +32,7 @@ const CreditsMovies = () => {
       <ul>
         {movieImg.map((movie) => (
           <li key={movie.id}>
-            <img src={movie.img ? `https://image.tmdb.org/t/p/w500/${movie.img}` : noImages} width={250} alt="Movie Poster" />
+            <img style={{ margin:`35 0 0 10`}} src={movie.img ? `https://image.tmdb.org/t/p/w500/${movie.img}` : noImages} width={250} alt="Movie Poster" />
           </li>
         ))}
       </ul>
