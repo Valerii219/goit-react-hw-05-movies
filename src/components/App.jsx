@@ -21,7 +21,7 @@ const App = () => {
           <Route path="review" element={<ReviewMovies />} />
         </Route>
       </Route>
-
+      <Route path="*" element={<PopularMovies  />} />
       {/* <Route path="*" element={<Error />} /> */}
     </Routes>
   );
