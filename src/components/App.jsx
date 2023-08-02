@@ -4,10 +4,9 @@ import Movies from 'pages/Movies'
 import Layout from 'Layout/Layout'
 // import Error from 'pages/Error'
 import Details from 'pages/Details'
-import CreditsMovies from './CreditsMovies/CreditsMovies'
-import ReviewMovies from './ReviewMovies/ReviewMovies'
 const PopularMovies = lazy(() => import('./PopularMovies/PopularMovies'));
-
+const ReviewMovies = lazy(() => import('./ReviewMovies/ReviewMovies'));
+const CreditsMovies = lazy(() => import('./CreditsMovies/CreditsMovies'));
 
 
 const App = () => {

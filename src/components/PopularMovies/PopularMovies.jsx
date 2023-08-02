@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { getMoviesAllDay } from 'services/getMovies';
 import css from './PopularMovies.module.css'
@@ -28,8 +28,7 @@ const location = useLocation();
   }, []);
 
   return (
-    <Suspense fallback={<h1 className ={css.trend}> aq</h1>}>
-      <h2 className ={css.trend}>Trending Today  </h2>
+    <div><h2 className ={css.trend}>Trending Today  </h2>
       <ul className={css.list}>
         {movieListDay.map((movie) => (
           <li key={movie.id} >
@@ -37,7 +36,7 @@ const location = useLocation();
           </li>
         ))}
       </ul>
-    </Suspense>
+    </div>
   );
 };
 
