@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { getMoviesAllDay } from 'services/getMovies';
 import css from './PopularMovies.module.css'
+
 const PopularMovies = () => {
   const [movieListDay, setMovieListDay] = useState([]);
 const location = useLocation();
