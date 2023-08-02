@@ -42,5 +42,5 @@ const ReviewMovies = () => {
     </div>
   );
 };
-
+ 
 export default ReviewMovies;

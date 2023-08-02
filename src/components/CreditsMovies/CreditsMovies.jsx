@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+
 import { useParams } from 'react-router-dom';
 import { getCredits } from 'services/getMovies';
+
 import noImages from '..//../images/noImages.jpg';
+
 
 const CreditsMovies = () => {
   const [movieImg, setmovieImg] = useState([]);
@@ -40,8 +43,9 @@ const CreditsMovies = () => {
   );
 };
 
-export default CreditsMovies;
 
+
+export default CreditsMovies;
 
 
 

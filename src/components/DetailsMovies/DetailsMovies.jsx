@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getDetails } from 'services/getMovies';
 import { NavLink, useParams, Outlet, useNavigate, useLocation, } from 'react-router-dom';
 import noImages from '../../images/noImages.jpg';
+
 import css from './DetailsMovies.module.css'
 
 const DetailsMovies = () => {

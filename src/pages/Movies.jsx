@@ -1,11 +1,13 @@
-import SearchMovies from 'components/SearchMovies/SearchMovies'
-import React from 'react'
+// import SearchMovies from 'components/SearchMovies/SearchMovies'
+
+import React, { Suspense, lazy } from 'react'
+const SearchMovies = lazy(() => import ('../components/SearchMovies/SearchMovies') );
 
 const Movies = (handleSearchSubmit) => {
   return (
-    <div>
+    <Suspense>
       <SearchMovies onSubmit={handleSearchSubmit}/>
-    </div>
+    </Suspense>
   )
 }
 

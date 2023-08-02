@@ -1,12 +1,12 @@
-
 import { Route, Routes,  } from 'react-router-dom'
+import { lazy } from 'react'
 import Movies from 'pages/Movies'
 import Layout from 'Layout/Layout'
 // import Error from 'pages/Error'
 import Details from 'pages/Details'
-import PopularMovies from './PopularMovies/PopularMovies'
 import CreditsMovies from './CreditsMovies/CreditsMovies'
 import ReviewMovies from './ReviewMovies/ReviewMovies'
+const PopularMovies = lazy(() => import('./PopularMovies/PopularMovies'));
 
 
 

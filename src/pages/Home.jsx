@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
 const Home = () => {
   return (
-    <div>
+    <Suspense>
       Home
-    </div>
+    </Suspense>
   )
 }
 
