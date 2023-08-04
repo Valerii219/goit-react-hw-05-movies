@@ -2,12 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link,   useLocation,  useSearchParams } from 'react-router-dom';
 import css from '../PopularMovies/PopularMovies.module.css'
 import { getSearch } from 'services/getMovies';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SearchMovies = () => {
   const [movies, setMovies] = useState('');
   const [movieList, setMovieList] = useState([]);
   const location = useLocation();
-const firstRender = useRef(true);
+  const firstRender = useRef(true);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const searchValue = searchParams.get('q');
@@ -27,11 +29,17 @@ const firstRender = useRef(true);
           return Promise.reject('Network response was not ok');
         })
         .then((data) => {
-          const movies = data.results.map((movie) => ({
-            id: movie.id,
-            title: movie.title || movie.original_name,
-          }));
-          setMovieList(movies);
+          if(data.results.length === 0){
+            return
+          }
+          else{
+            const movies = data.results.map((movie) => ({
+              id: movie.id,
+              title: movie.title || movie.original_name,
+            }));
+            setMovieList(movies);
+          }
+          
         })
         .catch((error) => {
           console.error('Error fetching movies:', error);
@@ -50,24 +58,33 @@ const firstRender = useRef(true);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (movies.trim() === '') {
-      alert('Write something in input');
+      toast.warn('Write something in input');
       return;
     }
+   
     setMovies('');
 
     getSearch(movies)
+   
       .then((response) => {
         if (response.ok) {
           return response.json();
         }
+       
         return Promise.reject('Network response was not ok');
       })
       .then((data) => {
-        const movies = data.results.map((movie) => ({
-          id: movie.id,
-          title: movie.title || movie.original_name,
-        }));
-        setMovieList(movies);
+        if(data.results.length === 0){
+          toast(`No results for your ${movies}`)
+        }
+        else{
+          const movies = data.results.map((movie) => ({
+            id: movie.id,
+            title: movie.title || movie.original_name,
+          })); 
+          setMovieList(movies);
+        }
+        
       })
       .catch((error) => {
         console.error('Error fetching movies:', error);
@@ -90,7 +107,17 @@ const firstRender = useRef(true);
         />
         <button type="submit" className={css.btnForm}>Search</button>
       </form>
-
+      <ToastContainer 
+      position="top-right"
+autoClose={2700}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss 
+draggable
+pauseOnHover ={false}
+theme="light" />
       <div>
         {movieList.length > 0 ?
         (<div><h2 className={css.trend}>Movie List</h2>
@@ -105,6 +132,7 @@ const firstRender = useRef(true);
         </ul></div>
       ) : ("")}
       </div>
+      
     </div>
   );
 };

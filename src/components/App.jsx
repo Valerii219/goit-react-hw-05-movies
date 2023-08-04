@@ -6,6 +6,7 @@ import Home from 'pages/Home'
 import Details from 'pages/Details'
 import Error from 'pages/Error'
 
+
 const ReviewMovies = lazy(() => import('./ReviewMovies/ReviewMovies'));
 const CreditsMovies = lazy(() => import('./CreditsMovies/CreditsMovies'));
 
