@@ -11,9 +11,8 @@ const DetailsMovies = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const savedDetails = useRef(location); 
-  console.log(savedDetails);
-  
  
+  
   useEffect(() => {
     if (savedDetails.current[id]) {
       setDetailsMovie(savedDetails.current[id]);
