@@ -10,10 +10,10 @@ const DetailsMovies = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const backLink = location.state?.from ?? "/";
-
-  const savedDetails = useRef({}); 
-
+  const savedDetails = useRef(location); 
+  console.log(savedDetails);
+  
+ 
   useEffect(() => {
     if (savedDetails.current[id]) {
       setDetailsMovie(savedDetails.current[id]);
@@ -44,7 +44,8 @@ const DetailsMovies = () => {
   }, [id]);
 
   const handleBack = () => {
-    navigate(backLink );
+    navigate(savedDetails.current.state?.from ?? '/', {replace: true} );
+    
   };
 
   return (
@@ -84,7 +85,7 @@ const DetailsMovies = () => {
         <p className={css.title}>Additional information</p>
         <ul className={css.ul}>
           <li>
-            <NavLink to={`cast`} className={css.link}>
+            <NavLink to={`cast`}  className={css.link}>
               Cast
             </NavLink>
           </li>
@@ -94,9 +95,10 @@ const DetailsMovies = () => {
             </NavLink>
           </li>
         </ul>
+        
       </div>
+      <Outlet />
       <div>
-        <Outlet />
       </div>
     </div>
   );

@@ -5,7 +5,9 @@ import css from './PopularMovies.module.css'
 
 const PopularMovies = () => {
   const [movieListDay, setMovieListDay] = useState([]);
+  
 const location = useLocation();
+
   useEffect(() => {
     getMoviesAllDay()
       .then((response) => {
@@ -29,11 +31,12 @@ const location = useLocation();
   }, []);
 
   return (
-    <div><h2 className ={css.trend}>Trending Today  </h2>
+    <div>
+      <h2 className ={css.trend}>Trending Today  </h2>
       <ul className={css.list}>
         {movieListDay.map((movie) => (
           <li key={movie.id} >
-            <NavLink to={`movies/${movie.id}` } className={css.movieList} state ={{from:location}}> {movie.title || movie.original_name}</NavLink>
+            <NavLink to={`movies/${movie.id}`} className={css.movieList} state ={{from:location}}> {movie.title || movie.original_name}</NavLink>
           </li>
         ))}
       </ul>

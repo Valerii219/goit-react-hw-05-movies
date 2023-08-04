@@ -99,7 +99,7 @@ const firstRender = useRef(true);
           {movieList.map((movie) => (
             
             <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}  className={css.movieList} state ={{from:location}}>{movie.title || movie.original_name}</Link>
+              <Link to={`/movies/${movie.id}` }  className={css.movieList} state ={{from:location}}>{movie.title || movie.original_name}</Link>
             </li>
           ))}
         </ul></div>
